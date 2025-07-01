@@ -1,6 +1,7 @@
 # Wtyczka MergeConcat dla QGIS
 
 ## Opis
+Wtyczka została stworzona na potrzeby firmy A.T w celu automatyzacji powtarzalnych czynności i uproszczenia pracy z danymi przestrzennymi. Jej celem jest zwiększenie efektywności oraz ograniczenie liczby błędów podczas codziennej pracy z warstwami wektorowymi.
 Prosta i wydajna wtyczka do łączenia zaznaczonych obiektów wektorowych, która jednocześnie łączy (konkatenuje) wartości z wybranego pola atrybutów. Idealna do pracy z danymi geodezyjnymi, np. przy scalaniu działek ewidencyjnych.
 
 ## Główne funkcje
