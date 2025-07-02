@@ -1,0 +1,15 @@
+[general]
+name=Mergorator
+qgisMinimumVersion=3.16
+description=Merge selected features and concatenate parcel numbers (nr_dzialki)
+about=Narzędzie do szybkiego łączenia poligonów (np. działek ewidencyjnych).\n\nFunkcje:\n* Automatycznie łączy geometrię zaznaczonych obiektów.\n* Kopiuje atrybuty z największego obiektu źródłowego.\n* Najważniejsza funkcja: scala numery z pola 'nr_dzialki' w jeden, posortowany ciąg tekstowy (konkatenacja).\n\nZostało zoptymalizowane pod kątem pracy z plikami Shapefile i zawiera zabezpieczenia przed typowymi błędami, takimi jak przekroczenie maksymalnej długości atrybutu (254 znaki) oraz praca na niestabilnych warstwach tymczasowych.
+version=1.7.2
+author=Michał Baczkiewicz
+email=michal.baczkiewicz@at.agro.pl
+category=Vector
+tags=łączenie,scalanie,atrybuty,działki,konkatenacja,shp,shapefile,merge,concatenate,pola,mergorator
+icon=icon.png
+repository=https://github.com/m-baczkiewicz/Mergorator
+tracker=https://github.com/m-baczkiewicz/Mergorator/issues
+experimental=False
+deprecated=False

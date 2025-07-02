@@ -1,45 +1,61 @@
-# Wtyczka MergeConcat dla QGIS
+# <img src="icon.png" width="48" align="center"> Mergorator
+
+![Plugin Version](https://img.shields.io/badge/Wersja-2.0.0-blue)
+![QGIS Version](https://img.shields.io/badge/QGIS-3.16%2B-green)
+![License](https://img.shields.io/badge/Licencja-MIT-lightgrey)
 
 ## Opis
+<<<<<<< Updated upstream
 Wtyczka została stworzona na potrzeby firmy A.T w celu automatyzacji powtarzalnych czynności i uproszczenia pracy z danymi przestrzennymi. Jej celem jest zwiększenie efektywności oraz ograniczenie liczby błędów podczas codziennej pracy z warstwami wektorowymi.
 Prosta i wydajna wtyczka do łączenia zaznaczonych obiektów wektorowych, która jednocześnie łączy (konkatenuje) wartości z wybranego pola atrybutów. Idealna do pracy z danymi geodezyjnymi, np. przy scalaniu działek ewidencyjnych.
+=======
+>>>>>>> Stashed changes
 
-## Główne funkcje
-- **Łączenie geometrii**: Tworzy jedną, wspólną geometrię z wielu zaznaczonych obiektów.
-- **Inteligentna konkatenacja atrybutów**: Automatycznie znajduje pole o nazwie `nr_dzialki` (wielkość liter nie ma znaczenia) i łączy unikalne numery w jeden ciąg znaków, oddzielony przecinkami.
-- **Kopiowanie pozostałych atrybutów**: Atrybuty dla nowego obiektu są kopiowane z tego obiektu, który przed połączeniem miał największą powierzchnię.
-- **Walidacja geometrii**: Wtyczka automatycznie próbuje naprawić nieprawidłowe geometrie przed ich połączeniem, co zwiększa stabilność operacji.
-- **Integracja z sesją edycyjną QGIS**:
-  - Jeśli warstwa nie jest w trybie edycji, wtyczka automatycznie go włączy, wykona operację i zapisze zmiany.
-  - Jeśli warstwa jest już w trybie edycji, wtyczka dokona zmian w ramach istniejącej sesji, pozwalając użytkownikowi na kontynuowanie pracy i ręczne zapisanie zmian.
+**Mergorator** to prosta, ale potężna wtyczka do QGIS, stworzona z myślą o efektywnej pracy z danymi wektorowymi, zwłaszcza w formacie **Shapefile**. Jej głównym zadaniem jest łączenie zaznaczonych obiektów (np. działek ewidencyjnych) w jeden i automatyczna konkatenacja (scalanie) ich atrybutów z wybranego pola.
 
-## Instalacja
+Wtyczka została zaprojektowana, aby rozwiązywać typowe problemy napotykane podczas edycji plików SHP, takie jak błędy zapisu spowodowane pracą na warstwach tymczasowych czy przekroczeniem limitu długości pola atrybutu.
 
-### Zalecana metoda: Instalacja z pliku ZIP
-1. Pobierz plik `MergeConcat.zip`.
-2. W QGIS przejdź do menu `Wtyczki` -> `Zarządzaj i instaluj wtyczki...`.
-3. Wybierz zakładkę `Zainstaluj z pliku ZIP`.
-4. Wskaż pobrany plik `MergeConcat.zip` i kliknij `Zainstaluj wtyczkę`.
-5. Wtyczka pojawi się w zakładce `Zainstalowane`. Upewnij się, że jest włączona (zaznaczony checkbox).
+### Główne Funkcje
 
-### Metoda ręczna (dla zaawansowanych)
-1. Rozpakuj plik `MergeConcat.zip`.
-2. Skopiuj folder `MergeConcat` do katalogu wtyczek QGIS:
-   - **Windows**: `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\`
-   - **Linux**: `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/`
-   - **macOS**: `~/Library/Application Support/QGIS/QGIS3/profiles/default/python/plugins/`
-3. Uruchom ponownie QGIS.
+*   **Łączenie geometrii**: Łączy geometrię dwóch lub więcej zaznaczonych obiektów.
+*   **Inteligentne kopiowanie atrybutów**: Wszystkie atrybuty nowego obiektu są kopiowane z największego poligonu źródłowego.
+*   **Konkatenacja numerów działek**: Automatycznie znajduje pole o nazwie `nr_dzialki` i scala wartości z tego pola ze wszystkich łączonych obiektów w jeden, posortowany ciąg tekstowy (np. `12,13,15/2`).
 
-## Jak używać?
-1. Otwórz w QGIS warstwę wektorową, którą chcesz edytować (np. plik Shapefile lub warstwę w GeoPackage).
-2. Zaznacz co najmniej dwa obiekty, które chcesz połączyć.
-3. Kliknij ikonę wtyczki MergeConcat na pasku narzędzi.
-4. Gotowe! Obiekty zostaną połączone zgodnie z opisanymi zasadami.
+## Description
+
+**Mergorator** is a simple yet powerful QGIS plugin designed for efficient work with vector data, especially the **Shapefile** format. Its main purpose is to merge selected features (e.g., land parcels) into a single feature and automatically concatenate their attributes from a specified field.
+
+The plugin was designed to solve common issues encountered while editing SHP files, such as save errors caused by editing temporary layers or exceeding attribute field length limits.
+
+### Key Features
+
+*   **Merge Geometries**: Merges the geometry of two or more selected features.
+*   **Smart Attribute Copying**: All attributes for the new feature are copied from the largest source polygon.
+*   **Parcel Number Concatenation**: Automatically finds a field named `nr_dzialki` and merges values from this field from all source features into a single, sorted string (e.g., `12,13,15/2`).
+*   **Shapefile-Specific Safeguards**: Built-in mechanisms to protect against:
+    *   Editing unstable temporary layers (the operation is blocked).
+    *   Exceeding the maximum text field length (254 characters for SHP).
+
+---
+
+## ⚙️ Instalacja / Installation
+
+1.  Pobierz najnowszą wersję wtyczki jako plik `.zip`.
+2.  W QGIS, przejdź do menu `Wtyczki` -> `Zarządzaj wtyczkami...`.
+3.  W nowym oknie wybierz zakładkę `Zainstaluj z pliku ZIP`.
+4.  Wskaż pobrany plik `.zip` i kliknij `Zainstaluj wtyczkę`.
+5.  Po instalacji upewnij się, że wtyczka jest włączona na liście `Zainstalowane`.
+
+1.  Download the latest version of the plugin as a `.zip` file.
+2.  In QGIS, go to `Plugins` -> `Manage and Install Plugins...`.
+3.  In the new window, select the `Install from ZIP` tab.
+4.  Point to the downloaded `.zip` file and click `Install Plugin`.
+5.  After installation, ensure the plugin is enabled in the `Installed` list.
 
 
-## Logowanie
-Wszystkie operacje i ewentualne błędy są zapisywane w **Panelu komunikatów z dziennika** w QGIS (`Widok` -> `Panele`). Sprawdzaj zakładkę **`MergeConcat`**, aby śledzić, co robi wtyczka.
+## 👤 Autor / Author
 
+<<<<<<< Updated upstream
 ## Autor
 *   **Michał Baczkiewicz**
 *   Email: `michal.baczkiewicz@at.agro.pl`
@@ -48,3 +64,6 @@ Wszystkie operacje i ewentualne błędy są zapisywane w **Panelu komunikatów z
 *   **v1.5** (2025-06-30): Poprawiono metodę sprawdzania statusu edycji dla kompatybilności z różnymi wersjami QGIS. Ulepszono obsługę błędów.
 *   **v1.4** (2025-06-30): Wprowadzono inteligentne zarządzanie sesją edycyjną.
 *   **v1.3** (2025-06-25): Pierwsza stabilna, działająca wersja z walidacją geometrii.
+=======
+*   **Michał Baczkiewicz** - [m-baczkiewicz](https://m-baczkiewicz.github.io/Portfolio/index.html)
+>>>>>>> Stashed changes
