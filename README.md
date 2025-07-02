@@ -5,14 +5,8 @@
 ![License](https://img.shields.io/badge/Licencja-MIT-lightgrey)
 
 ## Opis
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 Wtyczka została stworzona na potrzeby firmy A.T w celu automatyzacji powtarzalnych czynności i uproszczenia pracy z danymi przestrzennymi. Jej celem jest zwiększenie efektywności oraz ograniczenie liczby błędów podczas codziennej pracy z warstwami wektorowymi.
 Prosta i wydajna wtyczka do łączenia zaznaczonych obiektów wektorowych, która jednocześnie łączy (konkatenuje) wartości z wybranego pola atrybutów. Idealna do pracy z danymi geodezyjnymi, np. przy scalaniu działek ewidencyjnych.
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 **Mergorator** to prosta, ale potężna wtyczka do QGIS, stworzona z myślą o efektywnej pracy z danymi wektorowymi, zwłaszcza w formacie **Shapefile**. Jej głównym zadaniem jest łączenie zaznaczonych obiektów (np. działek ewidencyjnych) w jeden i automatyczna konkatenacja (scalanie) ich atrybutów z wybranego pola.
 
@@ -58,19 +52,16 @@ The plugin was designed to solve common issues encountered while editing SHP fil
 
 ## 👤 Autor / Author
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-## Autor
 *   **Michał Baczkiewicz**
 *   Email: `michal.baczkiewicz@at.agro.pl`
 
 ## Historia zmian
+*   **v1.6.2** (2025-07-02): Aktualizacja opisow, styli oraz poprawienie działania w warstwie tymczasowej.
+*   **v1.6** (2025-07-01): Wprowadzono działanie usprawniające edycje, narzędzie działa niezależnie od trybu edycji.
 *   **v1.5** (2025-06-30): Poprawiono metodę sprawdzania statusu edycji dla kompatybilności z różnymi wersjami QGIS. Ulepszono obsługę błędów.
 *   **v1.4** (2025-06-30): Wprowadzono inteligentne zarządzanie sesją edycyjną.
 *   **v1.3** (2025-06-25): Pierwsza stabilna, działająca wersja z walidacją geometrii.
+
 =======
 *   **Michał Baczkiewicz** - [m-baczkiewicz](https://m-baczkiewicz.github.io/Portfolio/index.html)
->>>>>>> Stashed changes
-=======
-*   **Michał Baczkiewicz** - [m-baczkiewicz](https://m-baczkiewicz.github.io/Portfolio/index.html)
->>>>>>> Stashed changes
+
