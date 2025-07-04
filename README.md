@@ -56,6 +56,8 @@ The plugin was designed to solve common issues encountered while editing SHP fil
 *   Email: `michal.baczkiewicz@at.agro.pl`
 
 ## Historia zmian
+*   **2.0.0** (2025-07-04): Zmiana podejścia edycjji, warstwa uruchamia tryb edycji i w nim pozostaje, commit usunięty.
+*   **1.9.3** (2025-07-04): Testy, zmiana ścieżki dostępu, poprawka w pliku metadanych.
 *   **v1.6.2** (2025-07-02): Aktualizacja opisow, styli oraz poprawienie działania w warstwie tymczasowej.
 *   **v1.6** (2025-07-01): Wprowadzono działanie usprawniające edycje, narzędzie działa niezależnie od trybu edycji.
 *   **v1.5** (2025-06-30): Poprawiono metodę sprawdzania statusu edycji dla kompatybilności z różnymi wersjami QGIS. Ulepszono obsługę błędów.
