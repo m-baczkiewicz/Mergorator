@@ -3,7 +3,9 @@
 from qgis.PyQt.QtWidgets import QAction, QMessageBox
 from qgis.PyQt.QtGui import QIcon
 from qgis.core import (
-    QgsFeature, QgsGeometry, QgsMessageLog, Qgis
+    QgsFeature, QgsGeometry, QgsMessageLog, Qgis,
+    QgsDistanceArea,
+    QgsProject
 )
 from qgis.utils import iface
 import os
@@ -64,20 +66,26 @@ class MergeConcatPlugin:
             fields = layer.fields()
             
             dzialki_field_name = None
-            for field in fields:
-                if field.name().lower() == "nr_dzialki":
-                    dzialki_field_name = field.name()
-                    break
+            area_field_name = None 
+            possible_area_fields = ["powierzchnia", "pole", "area", "pow"]
 
+            for field in fields:
+                field_name_lower = field.name().lower()
+                if field_name_lower == "nr_dzialki":
+                    dzialki_field_name = field.name()
+                elif field_name_lower in possible_area_fields:
+                    area_field_name = field.name()
+            
             valid_geometries, dzialki = [], set()
-            max_area, max_feat = -1, None
+            max_area_feature_size, max_feat = -1, None
 
             for feat in features:
                 geom = self.validate_geometry(feat.geometry())
                 if geom and not geom.isEmpty():
                     valid_geometries.append(geom)
-                    if geom.area() > max_area:
-                        max_area = geom.area()
+                    current_feat_area = feat.geometry().area()
+                    if current_feat_area > max_area_feature_size:
+                        max_area_feature_size = current_feat_area
                         max_feat = feat
                     if dzialki_field_name:
                         val = feat.attribute(dzialki_field_name)
@@ -99,6 +107,21 @@ class MergeConcatPlugin:
 
             if dzialki_field_name:
                 new_feat.setAttribute(dzialki_field_name, ",".join(sorted(list(dzialki))))
+            
+            if area_field_name:
+                d = QgsDistanceArea()
+                d.setEllipsoid(QgsProject.instance().ellipsoid())
+                
+                new_area_sq_meters = d.measureArea(geom_union)
+                new_area_hectares = new_area_sq_meters / 10000.0
+                
+                rounded_area = round(new_area_hectares, 2)
+                
+                new_feat.setAttribute(area_field_name, rounded_area)
+                
+                self.log_message(f"Obliczono {new_area_sq_meters:.2f} m2, zaokrąglono i zapisano jako {rounded_area:.2f} ha w polu '{area_field_name}'")
+            else:
+                self.log_message("Nie znaleziono pola powierzchni ('powierzchnia', 'area' etc.) do aktualizacji.", Qgis.Warning)
             
             if not layer.addFeature(new_feat): raise Exception("Błąd dostawcy: Nie udało się dodać nowego obiektu.")
             if not layer.deleteFeatures(feature_ids): raise Exception("Błąd dostawcy: Nie udało się usunąć starych obiektów.")

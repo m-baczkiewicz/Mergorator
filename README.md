@@ -56,6 +56,7 @@ The plugin was designed to solve common issues encountered while editing SHP fil
 *   Email: `michal.baczkiewicz@at.agro.pl`
 
 ## Historia zmian
+*   **2.0.1** (2025-07-09): Powierzchnia złączonej warstwy aktualizuje się.
 *   **2.0.0** (2025-07-04): Zmiana podejścia edycjji, warstwa uruchamia tryb edycji i w nim pozostaje, commit usunięty.
 *   **1.9.3** (2025-07-04): Testy, zmiana ścieżki dostępu, poprawka w pliku metadanych.
 *   **v1.6.2** (2025-07-02): Aktualizacja opisow, styli oraz poprawienie działania w warstwie tymczasowej.
